@@ -10,6 +10,7 @@ import Activity from "./scenes/activity";
 import Auth from "./scenes/auth";
 import Project from "./scenes/project";
 import User from "./scenes/user";
+import EditProject from "./scenes/project/edit";
 
 import Account from "./scenes/account";
 

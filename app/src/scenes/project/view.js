@@ -19,7 +19,20 @@ export default function ProjectView() {
   const [project, setProject] = useState(null);
   const [copied, setCopied] = React.useState(false);
   const { id } = useParams();
+  console.log("id", id);
+
+  //setProject(project._id)=id;
+
   const history = useHistory();
+  const [isProjectFinished, setIsProjectFinished] = useState(false);
+  const handleFinishProject = () => {
+    setIsProjectFinished(!isProjectFinished);
+    
+  };
+
+
+  
+  
 
   useEffect(() => {
     (async () => {
@@ -44,9 +57,26 @@ export default function ProjectView() {
             <div>
               <span className="text-[18px] text-[#212325] font-semibold">Project details</span>
             </div>
+            <div>
+            <button
+              onClick={() => handleFinishProject()}
+              className={`border py-[7px] px-[20px] rounded-[16px] ${isProjectFinished ? 'bg-[#0560FD] text-white' : 'bg-[#FFFFFF] text-[#0560FD] border-[#0560FD]'}`}
+            >
+              {isProjectFinished ? 'Projet Fini' : 'Projet Fini ?'}
+    </button>
+            </div>
             <div className="flex items-center gap-2">
+              
               <button
-                onClick={() => history.push(`/project/edit/${project?._id}`)}
+                onClick= {()=> {
+                  if (id) {
+                    console.log(`Redirection vers /project/edit/${id}`)
+                    history.push(`/project/edit/${id}`)
+                  } else {
+                    console.log("project._id n'existe pas ou est falsy",id)
+                    // Gérer le cas où project._id n'existe pas ou est falsy (null, undefined, etc.)
+                  }
+                } }
                 className="border !border-[#0560FD] text-[#0560FD] py-[7px] px-[20px] bg-[#FFFFFF] rounded-[16px]">
                 Edit
               </button>
@@ -60,7 +90,7 @@ export default function ProjectView() {
 }
 
 const ProjectDetails = ({ project }) => {
-  console.log(project);
+ 
   return (
     <div>
       <div className="flex flex-wrap p-3">
@@ -70,7 +100,7 @@ const ProjectDetails = ({ project }) => {
               <div className="flex justify-between gap-2">
                 <div className="flex gap-20">
                   <span className="w-fit text-[20px] text-[#0C1024] font-bold">Nom du projet : </span>
-                  <span className="w-fit text-[20px] text-[#0C1024] font-bold">{project.name.toString()}</span>
+                  <span className="w-fit text-[20px] text-[#0C1024] font-bold">{project.name}</span>
                 </div>
                 <div className="flex flex-1 flex-column items-end gap-3">
                   <Links project={project} />

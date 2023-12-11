@@ -107,6 +107,7 @@ const Create = () => {
             <Formik
               initialValues={{}}
               onSubmit={async (values, { setSubmitting }) => {
+                console.log('values',values);
                 try {
                   values.status = "active";
                   values.availability = "not available";
@@ -212,6 +213,7 @@ const FilterStatus = ({ filter, setFilter }) => {
 
 const UserCard = ({ hit, projects }) => {
   const history = useHistory();
+  console.log("hit", hit);
   return (
     <div
       onClick={() => history.push(`/user/${hit._id}`)}
@@ -247,7 +249,7 @@ const UserCard = ({ hit, projects }) => {
       {/* infos */}
       <div className="flex flex-col flex-1 justify-between">
         <div className="flex flex-col items-center text-center my-4 space-y-1">
-          <p className="font-semibold text-lg">{hit.name}</p>
+          <p className="font-semibold text-lg">{hit.username}</p>
         </div>
       </div>
     </div>

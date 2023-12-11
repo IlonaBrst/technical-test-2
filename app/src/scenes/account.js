@@ -21,6 +21,7 @@ export default () => {
   if (!user) return <Loader />;
 
   async function handleSubmit(e) {
+    console.log(values);
     e.preventDefault();
     setIsLoading(true);
     let body = values;
@@ -34,6 +35,7 @@ export default () => {
     }
     setIsLoading(false);
   }
+  console.log(values);
 
   return (
     <div>
@@ -45,7 +47,7 @@ export default () => {
             <div className="flex justify-between flex-wrap mt-3">
               <div className="w-full md:w-[48.5%]">
                 <div>Name</div>
-                <input className="projectsInput" name="name" value={values.name} onChange={(e) => setValues({ ...values, name: e.target.value })} />
+                <input className="projectsInput" name="name" value={values.name || ''} onChange={(e) => setValues({ ...values, name: e.target.value })} />
               </div>
               <div className="w-full md:w-[48.5%]">
                 <div>Email</div>
