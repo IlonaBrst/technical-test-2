@@ -62,7 +62,7 @@ export default function ProjectView() {
               onClick={() => handleFinishProject()}
               className={`border py-[7px] px-[20px] rounded-[16px] ${isProjectFinished ? 'bg-[#0560FD] text-white' : 'bg-[#FFFFFF] text-[#0560FD] border-[#0560FD]'}`}
             >
-              {isProjectFinished ? 'Projet Fini' : 'Projet Fini ?'}
+              {isProjectFinished ? 'Finished' : 'In Progress'}
     </button>
             </div>
             <div className="flex items-center gap-2">
